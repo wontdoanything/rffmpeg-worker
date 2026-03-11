@@ -6,15 +6,16 @@ RUN apt update && apt install -y \
     build-essential \
     git \
     pkg-config \
-    wget \
-    curl \
     yasm \
     nasm \
     libsmbclient-dev \
     libbluray-dev \
     libssl-dev \
     libvulkan-dev \
+    libplacebo-dev \
+    ninja-build \
     ca-certificates \
+    vulkan-validationlayers-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # 安装高版本 libplacebo（满足 >=4.192.0）
