@@ -45,5 +45,5 @@ jobs:
       - run: |
           docker buildx imagetools create \
             --tag ghcr.io/sjtuross/rffmpeg-worker:latest \
-            ghcr.io/sjtuross/rffmpeg-worker:amd64 \
-            ghcr.io/sjtuross/rffmpeg-worker:arm64
+#            bxgms/rffmpeg-worker-vulkan:amd64 \
+            bxgms/rffmpeg-worker-vulkan:arm64

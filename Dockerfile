@@ -31,6 +31,8 @@ RUN ./configure \
     --enable-gpl \
     --enable-version3 \
     --enable-openssl \
+    --enable-vulkan \
+    --enable-libplacebo \
     --extra-version="7.1" \
     --prefix=/usr/local \
     && make -j"$(nproc)" \
