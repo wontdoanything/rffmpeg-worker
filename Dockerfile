@@ -6,12 +6,20 @@ RUN apt update && apt install -y \
     build-essential \
     git \
     pkg-config \
+    wget \
+    curl \
     yasm \
     nasm \
     libsmbclient-dev \
     libbluray-dev \
     libssl-dev \
+    libvulkan-dev \
     ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装高版本 libplacebo（满足 >=4.192.0）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libplacebo-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build

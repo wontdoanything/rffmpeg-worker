@@ -44,6 +44,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           docker buildx imagetools create \
-            --tag ghcr.io/bxgms/rffmpeg-worker-vulkan:latest \
-#            bxgms/rffmpeg-worker-vulkan:amd64 \
-               ghcr.io/bxgms/rffmpeg-worker-vulkan:arm64
+            --tag ghcr.io/wontdoanything/rffmpeg-worker:latest \
+#            ghcr.io/wontdoanything/rffmpeg-worker-vulkan:amd64 \
+               ghcr.io/wontdoanything/rffmpeg-worker:arm64
