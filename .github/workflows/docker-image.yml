@@ -28,7 +28,7 @@ jobs:
           context: .
           push: true
           platforms: linux/${{ matrix.arch }}
-          tags: bxgms/rffmpeg-worker:${{ matrix.arch }}
+          tags: ghcr.io/bxgms/rffmpeg-worker-vulkan:${{ matrix.arch }}
           cache-from: type=gha,scope=${{ matrix.arch }}
           cache-to: type=gha,mode=max,scope=${{ matrix.arch }}
           provenance: false
@@ -44,6 +44,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           docker buildx imagetools create \
-            --tag ghcr.io/sjtuross/rffmpeg-worker:latest \
-           # bxgms/rffmpeg-worker-vulkan:amd64 \
-           bxgms/rffmpeg-worker-vulkan:arm64
+            --tag ghcr.io/bxgms/rffmpeg-worker-vulkan:latest \
+           # ghcr.io/bxgms/rffmpeg-worker-vulkan:amd64 \
+           ghcr.io/bxgms/rffmpeg-worker-vulkan:arm64
