@@ -28,7 +28,7 @@ jobs:
           context: .
           push: true
           platforms: linux/${{ matrix.arch }}
-          tags: ghcr.io/bxgms/rffmpeg-worker-vulkan:${{ matrix.arch }}
+          tags: ghcr.io/wontdoanything/rffmpeg-worker:${{ matrix.arch }}
           cache-from: type=gha,scope=${{ matrix.arch }}
           cache-to: type=gha,mode=max,scope=${{ matrix.arch }}
           provenance: false
