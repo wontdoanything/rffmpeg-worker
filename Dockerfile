@@ -15,7 +15,8 @@ RUN apt update && apt install -y \
     libvulkan1 \
     libplacebo-dev \
     vulkan-headers \
-    #    vulkan-tools \
+    vulkan-tools \
+    ninja-build \
     ca-certificates \
     spirv-tools \
     libshaderc-dev \
