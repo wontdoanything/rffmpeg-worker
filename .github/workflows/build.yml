@@ -42,7 +42,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
+      - run:
           docker buildx imagetools create \
             --tag ghcr.io/wontdoanything/rffmpeg-worker:latest \
 #            ghcr.io/wontdoanything/rffmpeg-worker-vulkan:amd64 \
