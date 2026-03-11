@@ -45,5 +45,5 @@ jobs:
       - run:
           docker buildx imagetools create \
             --tag ghcr.io/wontdoanything/rffmpeg-worker:latest \
-#            ghcr.io/wontdoanything/rffmpeg-worker-vulkan:amd64 \
-               ghcr.io/wontdoanything/rffmpeg-worker:arm64
+            ghcr.io/wontdoanything/rffmpeg-worker:amd64 \
+            ghcr.io/wontdoanything/rffmpeg-worker:arm64
