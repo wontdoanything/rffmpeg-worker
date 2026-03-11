@@ -12,22 +12,22 @@ RUN apt update && apt install -y \
     libbluray-dev \
     libssl-dev \
     libvulkan-dev \
+    libvulkan1 \
     libplacebo-dev \
+#    vulkan-tools \
     ninja-build \
     ca-certificates \
     vulkan-validationlayers-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装高版本 libplacebo（满足 >=4.192.0）
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libplacebo-dev \
-    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
 
 RUN git clone --depth 1 --branch release/7.1 --single-branch https://git.ffmpeg.org/ffmpeg.git
 
 WORKDIR /build/ffmpeg
+
+RUN pkg-config --modversion vulkan
 
 RUN ./configure \
     --disable-debug \
