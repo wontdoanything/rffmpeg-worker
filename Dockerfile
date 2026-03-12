@@ -22,7 +22,6 @@ RUN apt update && apt install -y \
     libssl-dev \
     ca-certificates \
     libvulkan-dev \
-    vulkan-headers \
     libvulkan1 \
     mesa-vulkan-drivers \
     libplacebo-dev \
@@ -54,12 +53,13 @@ RUN pkg-config --modversion libplacebo
 
 RUN ls /usr/include/vulkan
 
+
 RUN pkg-config --cflags vulkan
 
 #ENV PKG_CONFIG_PATH=/usr/lib/${TARGETARCH}-linux-gnu-linux-gnu/pkgconfig
 
 RUN pkg-config --debug vulkan
-RUN ls /usr/lib/*-linux-gnu/libvulkan.so
+RUN ls -l /usr/lib/*-linux-gnu/libvulkan*
 
 RUN ./configure \
     --disable-debug \
