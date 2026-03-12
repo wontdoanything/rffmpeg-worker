@@ -58,6 +58,14 @@ RUN pkg-config --cflags vulkan
 
 #ENV PKG_CONFIG_PATH=/usr/lib/${TARGETARCH}-linux-gnu-linux-gnu/pkgconfig
 
+RUN if [ "$TARGETARCH" = "amd64" ]; then export DEB_ARCH=x86_64-linux-gnu; \
+    elif [ "$TARGETARCH" = "arm64" ]; then export DEB_ARCH=aarch64-linux-gnu; \
+    else echo "Unsupported TARGETARCH $TARGETARCH"; exit 1; fi && \
+    echo "Using DEB_ARCH=$DEB_ARCH"
+
+# 设置 pkg-config 搜索路径
+ENV PKG_CONFIG_PATH=/usr/lib/${DEB_ARCH}/pkgconfig:/usr/lib/pkgconfig
+
 RUN pkg-config --debug vulkan
 RUN ls -l /usr/lib/*-linux-gnu/libvulkan*
 
@@ -82,6 +90,8 @@ RUN ./configure \
     --enable-version3 \
     --enable-openssl \
     --enable-vulkan \
+    --extra-cflags="-I/usr/include" \
+    --extra-ldflags="-L/usr/lib/${DEB_ARCH}" \
     --enable-libplacebo \
     --extra-version="7.1" \
     --prefix=/usr/local \
