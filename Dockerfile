@@ -1,4 +1,5 @@
-FROM debian:bookworm AS builder
+#FROM debian:bookworm AS builder
+FROM ubuntu:22.04 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
