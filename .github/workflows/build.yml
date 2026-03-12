@@ -47,7 +47,4 @@ jobs:
           #   --tag ghcr.io/wontdoanything/rffmpeg-worker:latest \
           #   ghcr.io/wontdoanything/rffmpeg-worker:amd64 \
           #   ghcr.io/wontdoanything/rffmpeg-worker:arm64
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            -t ghcr.io/wontdoanything/rffmpeg-worker:latest \
-            --push .
+          docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/wontdoanything/rffmpeg-worker:latest --push .
