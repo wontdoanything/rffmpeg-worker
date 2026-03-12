@@ -56,7 +56,6 @@ RUN ls /usr/include/vulkan
 
 RUN pkg-config --cflags vulkan
 
-#ENV PKG_CONFIG_PATH=/usr/lib/${TARGETARCH}-linux-gnu-linux-gnu/pkgconfig
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then export DEB_ARCH=x86_64-linux-gnu; \
     elif [ "$TARGETARCH" = "arm64" ]; then export DEB_ARCH=aarch64-linux-gnu; \
@@ -77,8 +76,11 @@ RUN cc test_vulkan.c -lvulkan -o test_vulkan
 RUN ./test_vulkan
 RUN echo $?
 
-RUN cp /usr/include/vulkan /tmp/vulkan_test
-RUN ./configure \
+RUN if [ "$TARGETARCH" = "amd64" ]; then export DEB_ARCH=x86_64-linux-gnu; \
+    elif [ "$TARGETARCH" = "arm64" ]; then export DEB_ARCH=aarch64-linux-gnu; \
+    else echo "Unsupported TARGETARCH $TARGETARCH"; exit 1; fi && \
+    echo "Using DEB_ARCH=$DEB_ARCH" && \
+    ./configure \
     --disable-debug \
     --disable-doc \
     --disable-ffplay \
@@ -91,7 +93,7 @@ RUN ./configure \
     --enable-openssl \
     --enable-vulkan \
     --extra-cflags="-I/usr/include" \
-    --extra-ldflags="-L/usr/lib/${DEB_ARCH}" \
+    --extra-ldflags="-L/usr/lib/$DEB_ARCH" \
     --enable-libplacebo \
     --extra-version="7.1" \
     --prefix=/usr/local \
