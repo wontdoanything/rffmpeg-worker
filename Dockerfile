@@ -108,7 +108,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then export DEB_ARCH=x86_64-linux-gnu; \
     && strip /usr/local/bin/ffmpeg || true \
     && strip /usr/local/bin/ffprobe || true
 
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -117,6 +117,8 @@ RUN apt update && apt install -y \
     libsmbclient \
     libbluray2 \
     ca-certificates \
+    mesa-vulkan-drivers \
+    vulkan-tools \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd
