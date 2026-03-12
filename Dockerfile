@@ -49,7 +49,7 @@ WORKDIR /build
 
 
 
-RUN git clone --depth 1 --branch release/6.0 --single-branch https://git.ffmpeg.org/ffmpeg.git
+RUN git clone --depth 1 --branch release/7.1 --single-branch https://git.ffmpeg.org/ffmpeg.git
 
 WORKDIR /build/ffmpeg
 
@@ -101,7 +101,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then export DEB_ARCH=x86_64-linux-gnu; \
     # --extra-cflags="-I/usr/include" \
     # --extra-ldflags="-L/usr/lib/$DEB_ARCH" \
     --enable-libplacebo \
-    --extra-version="6.0" \
+    --extra-version="7.1" \
     --prefix=/usr/local \
     && make -j"$(nproc)" \
     && make install \
