@@ -11,13 +11,12 @@ RUN apt update && apt install -y \
     libsmbclient-dev \
     libbluray-dev \
     libssl-dev \
+    ca-certificates \
     libvulkan-dev \
     libvulkan1 \
     libplacebo-dev \
-    vulkan-headers \
     vulkan-tools \
     ninja-build \
-    ca-certificates \
     spirv-tools \
     libshaderc-dev \
     vulkan-validationlayers-dev \
