@@ -66,6 +66,8 @@ RUN ls -l /usr/lib/*-linux-gnu/libvulkan*
 RUN echo '#include <vulkan/vulkan.h>' > test_vulkan.c
 RUN echo 'int main() { return 0; }' >> test_vulkan.c
 RUN cc test_vulkan.c -lvulkan -o test_vulkan
+RUN ./test_vulkan
+RUN echo $?
 
 
 RUN ./configure \
