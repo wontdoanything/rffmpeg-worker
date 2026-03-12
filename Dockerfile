@@ -25,9 +25,11 @@ RUN apt update && apt install -y \
     libvulkan1 \
     mesa-vulkan-drivers \
     libplacebo-dev \
+    libshaderc-dev \
     ninja-build \
     spirv-tools \
-    && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
+
 
 #RUN dpkg -i /root/libz3-4_4.8.12-3.1_${TARGETARCH}.deb && \
 #    dpkg -i /root/libllvm15_15.0.7-10_${TARGETARCH}.deb && \
@@ -46,6 +48,8 @@ RUN git clone --depth 1 --branch release/7.1 --single-branch https://git.ffmpeg.
 WORKDIR /build/ffmpeg
 
 RUN pkg-config --libs vulkan && pkg-config --cflags vulkan
+RUN pkg-config --modversion vulkan
+RUN pkg-config --modversion libplacebo
 
 RUN ./configure \
     --disable-debug \
