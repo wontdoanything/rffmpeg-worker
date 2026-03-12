@@ -62,7 +62,12 @@ RUN pkg-config --debug vulkan
 RUN ls -l /usr/lib/*-linux-gnu/libvulkan*
 
 # 模拟 configure 内部测试
-RUN cc -I/usr/include/vulkan -lvulkan -o test_vulkan /dev/null
+# 创建一个合法 main
+RUN echo '#include <vulkan/vulkan.h>
+int main() { return 0; }' > test_vulkan.c
+
+# 编译
+RUN cc test_vulkan.c -lvulkan -o test_vulkan
 
 RUN ./configure \
     --disable-debug \
