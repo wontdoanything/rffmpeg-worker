@@ -121,7 +121,7 @@ RUN apt update && apt install -y \
     vulkan-tools \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /var/run/sshd
+RUN mkdir -p /var/run/sshd
 
 COPY --from=builder /usr/local /usr/local
 COPY entrypoint.sh /entrypoint.sh
