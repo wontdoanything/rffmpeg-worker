@@ -61,6 +61,9 @@ RUN pkg-config --cflags vulkan
 RUN pkg-config --debug vulkan
 RUN ls -l /usr/lib/*-linux-gnu/libvulkan*
 
+# 模拟 configure 内部测试
+RUN cc -I/usr/include/vulkan -lvulkan -o test_vulkan /dev/null
+
 RUN ./configure \
     --disable-debug \
     --disable-doc \
