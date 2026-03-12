@@ -23,7 +23,7 @@ RUN apt update && apt install -y \
     ca-certificates \
     libvulkan-dev \
     libvulkan1 \
-    vulkan-headers \
+#    vulkan-headers \
     libplacebo-dev \
     vulkan-tools \
     ninja-build \
