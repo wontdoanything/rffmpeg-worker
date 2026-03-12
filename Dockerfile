@@ -91,7 +91,7 @@ RUN ./configure \
     --enable-openssl \
     --enable-vulkan \
     --extra-cflags="-I/usr/include" \
-    --extra-ldflags="-L/usr/lib/${DEB_ARCH}" \
+    --extra-ldflags="-L/usr/lib/${DEB_ARCH1}" \
     --enable-libplacebo \
     --extra-version="7.1" \
     --prefix=/usr/local \
