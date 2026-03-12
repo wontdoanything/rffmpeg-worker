@@ -77,7 +77,7 @@ RUN cc test_vulkan.c -lvulkan -o test_vulkan
 RUN ./test_vulkan
 RUN echo $?
 
-
+RUN cp /usr/include/vulkan /tmp/vulkan_test
 RUN ./configure \
     --disable-debug \
     --disable-doc \
@@ -91,7 +91,7 @@ RUN ./configure \
     --enable-openssl \
     --enable-vulkan \
     --extra-cflags="-I/usr/include" \
-    --extra-ldflags="-L/usr/lib/${DEB_ARCH1}" \
+    --extra-ldflags="-L/usr/lib/${DEB_ARCH}" \
     --enable-libplacebo \
     --extra-version="7.1" \
     --prefix=/usr/local \
