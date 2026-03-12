@@ -126,6 +126,7 @@ RUN apt update && apt install -y \
     libbluray2 \
     ca-certificates \
     vulkan-tools \
+    libplacebo-dev \
     && rm -rf /var/lib/apt/lists/*
     
 RUN dpkg -i /root/libz3-4_4.8.12-3.1_${TARGETARCH}.deb && \
