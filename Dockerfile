@@ -39,8 +39,11 @@ RUN apt update && apt install -y \
 #    rm -rf /var/lib/apt/lists/*  && \
 #    rm -rf /root/*.deb
 
+RUN pkg-config --modversion vulkan && pkg-config --libs vulkan && pkg-config --cflags vulkan
 
 WORKDIR /build
+
+
 
 RUN git clone --depth 1 --branch release/7.1 --single-branch https://git.ffmpeg.org/ffmpeg.git
 
