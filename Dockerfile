@@ -31,7 +31,7 @@ RUN apt update && apt install -y \
     libshaderc-dev \
     vulkan-validationlayers-dev
 
-    dpkg -i /root/libz3-4_4.8.12-3.1_${TARGETARCH}.deb && \
+RUN dpkg -i /root/libz3-4_4.8.12-3.1_${TARGETARCH}.deb && \
     dpkg -i /root/libllvm15_15.0.7-10_${TARGETARCH}.deb && \
     dpkg -i /root/mesa-vulkan-drivers_23.2.1-1ubuntu3_${TARGETARCH}.deb || apt-get -f install -y && \
     apt-mark hold mesa-vulkan-drivers && \
