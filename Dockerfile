@@ -63,10 +63,10 @@ RUN ls -l /usr/lib/*-linux-gnu/libvulkan*
 
 # 模拟 configure 内部测试
 # 创建一个合法 main
-RUN echo '#include <vulkan/vulkan.h> int main() { return 0; }' > test_vulkan.c
-
-# 编译
+RUN echo '#include <vulkan/vulkan.h>' > test_vulkan.c
+RUN echo 'int main() { return 0; }' >> test_vulkan.c
 RUN cc test_vulkan.c -lvulkan -o test_vulkan
+
 
 RUN ./configure \
     --disable-debug \
