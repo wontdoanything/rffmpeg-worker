@@ -1,4 +1,5 @@
-FROM debian:bookworm AS builder
+# FROM debian:bookworm-slim AS builder
+FROM debian:trixie-slim AS builder
 #FROM ubuntu:22.04 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -97,8 +98,8 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then export DEB_ARCH=x86_64-linux-gnu; \
     --enable-version3 \
     --enable-openssl \
     --enable-vulkan \
-    --extra-cflags="-I/usr/include" \
-    --extra-ldflags="-L/usr/lib/$DEB_ARCH" \
+    # --extra-cflags="-I/usr/include" \
+    # --extra-ldflags="-L/usr/lib/$DEB_ARCH" \
     --enable-libplacebo \
     --extra-version="6.0" \
     --prefix=/usr/local \
