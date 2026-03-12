@@ -22,6 +22,7 @@ RUN apt update && apt install -y \
     libssl-dev \
     ca-certificates \
     libvulkan-dev \
+    vulkan-headers \
     libvulkan1 \
     mesa-vulkan-drivers \
     libplacebo-dev \
@@ -47,9 +48,13 @@ RUN git clone --depth 1 --branch release/7.1 --single-branch https://git.ffmpeg.
 
 WORKDIR /build/ffmpeg
 
-RUN pkg-config --libs vulkan && pkg-config --cflags vulkan
+RUN pkg-config --libs vulkan
 RUN pkg-config --modversion vulkan
 RUN pkg-config --modversion libplacebo
+
+RUN ls /usr/include/vulkan
+
+RUN pkg-config --cflags vulkan
 
 #ENV PKG_CONFIG_PATH=/usr/lib/${TARGETARCH}-linux-gnu-linux-gnu/pkgconfig
 
