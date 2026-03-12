@@ -52,8 +52,9 @@ RUN pkg-config --modversion vulkan
 RUN pkg-config --modversion libplacebo
 
 #ENV PKG_CONFIG_PATH=/usr/lib/${TARGETARCH}-linux-gnu-linux-gnu/pkgconfig
-ls /usr/lib/*-linux-gnu/libvulkan.so
+
 RUN pkg-config --debug vulkan
+RUN ls /usr/lib/*-linux-gnu/libvulkan.so
 
 RUN ./configure \
     --disable-debug \
