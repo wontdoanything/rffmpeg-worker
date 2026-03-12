@@ -1,5 +1,5 @@
-#FROM debian:bookworm AS builder
-FROM ubuntu:22.04 AS builder
+FROM debian:bookworm AS builder
+#FROM ubuntu:22.04 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -13,6 +13,10 @@ ARG TARGETARCH
 
 RUN apt update && apt install -y \
     build-essential \
+    gcc \
+    g++ \
+    libc6-dev \
+    binutils \
     git \
     pkg-config \
     yasm \
