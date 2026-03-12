@@ -48,7 +48,7 @@ WORKDIR /build
 
 
 
-RUN git clone --depth 1 --branch release/7.1 --single-branch https://git.ffmpeg.org/ffmpeg.git
+RUN git clone --depth 1 --branch release/7.0.2 --single-branch https://git.ffmpeg.org/ffmpeg.git
 
 WORKDIR /build/ffmpeg
 
