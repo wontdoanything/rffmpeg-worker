@@ -120,6 +120,7 @@ COPY ./${TARGETOS}_${TARGETARCH}/mesa-vulkan-drivers_23.2.1-1ubuntu3_${TARGETARC
 
 
 RUN apt update && apt install -y \
+    python3-minimal \
     openssh-server \
     libsmbclient \
     libbluray2 \
